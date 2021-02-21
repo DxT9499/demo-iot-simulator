@@ -7,7 +7,7 @@ ul.nav-pills {
     position: fixed;
 }
 #devices-list {
-    height: 928px;
+    height: 950px;
     overflow-y: scroll;
     scroll-behavior: smooth;
     padding-right: 0%;
@@ -44,5 +44,5 @@ img {
     width: 75px;
 }
 #ui-container {
-    position: fixed;
+    
 }
