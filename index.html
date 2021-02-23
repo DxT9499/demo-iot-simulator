@@ -13,52 +13,42 @@
     </head>
     <body>
         <div class="container-fluid">
-            <div id="plugin-container" data-spy="scroll" data-target="#myScrollspy" data-offset="1">
-                <div class="row">
-                    <nav id="myScrollspy" class="col-1" >
-                        <ul class="nav nav-pills flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#section1">Section 1</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#section2">Section 2</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#section3">Section 3</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#section4">Section 4</a>
-                            </li>
-                        </ul>
+            <div class="row">
+                <div class="col-3" style="padding-left: 0px;padding-right: 0px;">
+                    <nav class="tab" >
+                        <button class="tablinks active" onclick="openList(event, 'section1')">1</button>
+                        <button class="tablinks" onclick="openList(event, 'section2')">2</button>
+                        <button class="tablinks" onclick="openList(event, 'section3')">3</button>
+                        <button class="tablinks" onclick="openList(event, 'section4')">4</button>
                     </nav>
-                    <div id="devices-list" class="col-2" ondrop="drop(event)" ondragover="allowDrop(event)">
-                        <div id="section1" class="bg-light">    
+                    <div id="devices-list" class="" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <div id="section1" class="tabcontent" style="display: block;">    
                             <h1>Section 1</h1>
                             <p>Try to scroll this section and look at the navigation list while scrolling!</p>
                             <img class="rounded" draggable="true" ondragstart="drag(event)" id="drag1" src="./IoTdevices/server.png">
                         </div>
-                        <div id="section2" class="bg-light"> 
+                        <div id="section2" class="tabcontent"> 
                             <h1>Section 2</h1>
                             <p>Try to scroll this section and look at the navigation list while scrolling!</p>
                             <img class="rounded" draggable="true" ondragstart="drag(event)" id="drag2" src="./IoTdevices/camera.png">
                         </div>        
-                        <div id="section3" class="bg-light">         
+                        <div id="section3" class="tabcontent">         
                             <h1>Section 3</h1>
                             <p>Try to scroll this section and look at the navigation list while scrolling!</p>
-                            <img class="rounded" src="./IoTdevices/dooropen.png">
-                            <img class="rounded" src="./IoTdevices/curtains.png">
+                            <img class="rounded" draggable="true" ondragstart="drag(event)" id="drag3" src="./IoTdevices/dooropen.png">
+                            <img class="rounded" draggable="true" ondragstart="drag(event)" id="drag4" src="./IoTdevices/curtains.png">
                         </div>
-                        <div id="section4" class="bg-light">         
+                        <div id="section4" class="tabcontent">         
                             <h1>Section 4</h1>
                             <p>Try to scroll this section and look at the navigation list while scrolling!</p>
-                            <img class="rounded" src="./IoTdevices/coffemaker.png">
-                            <img class="rounded" src="./IoTdevices/thermometer.png">
+                            <img class="rounded" draggable="true" ondragstart="drag(event)" id="drag5" src="./IoTdevices/coffemaker.png">
+                            <img class="rounded" draggable="true" ondragstart="drag(event)" id="drag7" src="./IoTdevices/thermometer.png">
                         </div>      
                     </div>
-                    <div id="ui-container" class="col-9 bg-secondary" ondrop="drop(event)" ondragover="allowDrop(event)" >
-                    </div>
                 </div>
-            </div>              
+                <div id="ui-container" class="col-9 bg-secondary" ondrop="drop(event)" ondragover="allowDrop(event)" >
+                </div>
+            </div>             
         </div>  
     </body>
 </html>
