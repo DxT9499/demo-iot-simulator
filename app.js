@@ -40,3 +40,8 @@ function openList(evt, title) {
         evt.currentTarget.className += " active";
     }
 }
+
+var loadFile = function(event) {
+	var evt = document.getElementById('ui-container');
+	evt.style.background = "url("+URL.createObjectURL(event.target.files[0])+") no-repeat center";
+};
