@@ -29,13 +29,13 @@
                     <div id="devices-list" class="tabcontent" ondrop="drop(event)" ondragover="allowDrop(event)">
                         <div class="upload-map-button">
                             <div class="commonbutton">
-                                <p><input type="file"  accept="image/*" name="image" id="file"  onclick="loadFile(event)" style="display: none;"></p>
+                                <p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;"></p>
                                 <p><label for="file" style="cursor: pointer;">Upload Your Map</label></p>
                             </div>
                         </div>
-                        <div class="">    
+                        <div class="devicetype">    
                             <h6>System Core</h6>
-                            <img class="rounded" draggable="true" ondragstart="drag(event)" id="drag1" src="./IoTdevices/server.png">
+                            <img class="rounded" draggable="true" ondragstart="drag(event)" id="server-icon" src="./IoTdevices/server.png">
                         </div>
                         <div class=""> 
                             <h6>Sercurity Devices</h6>
@@ -54,7 +54,6 @@
                     </div>
                 </div>
                 <div id="ui-container" class="col-10 bg-secondary" ondrop="drop(event)" ondragover="allowDrop(event)" >
-                    <p><img id="output" ondrop="drop(event)" ondragover="allowDrop(event)"></p>
                 </div>
             </div>             
         </div>  

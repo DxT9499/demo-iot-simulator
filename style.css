@@ -100,7 +100,7 @@ body {
     margin-left: auto;
     margin-right: auto;
 }
-.commonbutton p{
+.commonbutton p,label{
     margin-bottom: 0%;
 }
 #devices-list
@@ -131,6 +131,9 @@ body {
 .rounded {
     height: 75px;
     width: 75px;
+}
+.rounded        :hover {
+    background-color: #E1ECFF;
 }
 #ui-container {
     height: 950px;
