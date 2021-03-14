@@ -3,11 +3,8 @@ function allowDrop(ev) {
 }
     
 function drag(ev) {
-    console.log(ev.target.id + " " + ev.target.parentElement.id);
     if(ev.target.parentElement.id == 'ui-container'){
         ev.dataTransfer.effectAllowed = 'move';
-        console.log(ev.dataTransfer.effectAllowed);
-        console.log(ev.target.parentElement.id);
     }
     else
         ev.dataTransfer.effectAllowed = 'copy';
@@ -15,25 +12,26 @@ function drag(ev) {
 }
     
 function drop(ev) {
-    console.log(ev.target.id + 'on drop function');
     ev.preventDefault();
     var x = ev.clientX;
     var y = ev.clientY;
     if(ev.dataTransfer.effectAllowed == 'move'){
-        console.log("test equal");
         var data = ev.dataTransfer.getData("text");
         var img = document.getElementById(data);
         img.style.left = x - 320 + "px";
         img.style.top = y - 50 + "px";
     }
-    
-    else if(ev.currentTarget.parentElement.id != 'ui-container'){
+    else{
         var data = ev.dataTransfer.getData("text");
         var copyimg = document.createElement("img");
         var original = document.getElementById(data);
-        console.log("unif");
-        console.log(ev.target.parentElement.id);
-        copyimg.setAttribute('id',original.id + 'onui');
+        copyimg.setAttribute('id',original.id + '-onui-0');
+        while(document.getElementById(copyimg.id) != null){
+            let num_order = Number(copyimg.id.slice(-1));
+            num_order++;
+            console.log(num_order);
+            copyimg.setAttribute('id',copyimg.id.replace(/.$/,num_order));
+        }
         copyimg.src = original.src;
         copyimg.style.position = "absolute";
         copyimg.style.left = x - 320 + "px";
