@@ -1,3 +1,4 @@
+var del_element_id = "";
 function allowDrop(ev) {
     ev.preventDefault();
 }
@@ -24,6 +25,7 @@ function drop(ev) {
         img.style.top = y - 50 - img.offsetHeight/2 + "px";
     }
     else{
+        console.log(ev.dataTransfer.getData("text"))
         var data = ev.dataTransfer.getData("text");
         var copyimg = document.createElement("img");
         var original = document.getElementById(data);
@@ -31,7 +33,6 @@ function drop(ev) {
         while(document.getElementById(copyimg.id) != null){
             let num_order = Number(copyimg.id.slice(-1));
             num_order++;
-            console.log(num_order);
             copyimg.setAttribute('id',copyimg.id.replace(/.$/,num_order));
         }
         copyimg.src = original.src;
@@ -41,7 +42,7 @@ function drop(ev) {
         copyimg.setAttribute('draggable','true');
         copyimg.setAttribute('ondragstart','drag(event)');
         copyimg.setAttribute('cursor','pointer');
-        copyimg.setAttribute('onclick','showMiniMenu(this.id,event)');
+        copyimg.setAttribute('onclick','showMiniMenu(this.id)');
         ev.target.appendChild(copyimg);
     }
 }
@@ -71,11 +72,10 @@ var loadFile = function(event) {
 	evt.style.background = "url("+URL.createObjectURL(event.target.files[0])+") no-repeat center";
 };
 
-function showMiniMenu(element_id,ev) {
-    console.log(ev)
+function showMiniMenu(element_id) {
     var foo = document.getElementById('mini-menu');
     var opponent = document.getElementById(element_id);
-    if(foo.style.display == '' || foo.style.display == 'none'){
+    if(foo.style.display == '' || foo.style.display == 'none' || element_id != del_element_id){
             foo.style.display = 'block';
     }
     else {
@@ -83,10 +83,12 @@ function showMiniMenu(element_id,ev) {
     }
     foo.style.left = opponent.offsetLeft + opponent.offsetWidth + "px";
     foo.style.top = opponent.offsetTop + "px";
+    del_element_id = element_id;
 }
 
-function deleteElement(ev) {
-    console.log(ev);
-    document.getElementById(element_id).remove;
+function deleteElement() {
+    console.log(del_element_id);
+    var element = document.getElementById(del_element_id);
+	element.parentNode.removeChild(element);
+    document.getElementById('mini-menu').style.display = 'none';
 }
-
