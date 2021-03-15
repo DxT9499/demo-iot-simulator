@@ -13,13 +13,15 @@ function drag(ev) {
     
 function drop(ev) {
     ev.preventDefault();
-    var x = ev.clientX;
-    var y = ev.clientY;
+    var x = ev.pageX;
+    var y = ev.pageY;
     if(ev.dataTransfer.effectAllowed == 'move'){
         var data = ev.dataTransfer.getData("text");
         var img = document.getElementById(data);
-        img.style.left = x - 320 + "px";
-        img.style.top = y - 50 + "px";
+        var shiftX = ev.clientX - ev.target.getBoundingClientRect().left;
+        var shiftY = ev.clientY - ev.target.getBoundingClientRect().top;
+        img.style.left = x - 320 - img.offsetWidth/2 + "px";
+        img.style.top = y - 50 - img.offsetHeight/2 + "px";
     }
     else{
         var data = ev.dataTransfer.getData("text");
@@ -34,10 +36,12 @@ function drop(ev) {
         }
         copyimg.src = original.src;
         copyimg.style.position = "absolute";
-        copyimg.style.left = x - 320 + "px";
-        copyimg.style.top = y - 50 + "px";
+        copyimg.style.left = x - 320 - original.offsetWidth/2 + "px";
+        copyimg.style.top = y - 50 - original.offsetHeight/2 + "px";
         copyimg.setAttribute('draggable','true');
         copyimg.setAttribute('ondragstart','drag(event)');
+        copyimg.setAttribute('cursor','pointer');
+        copyimg.setAttribute('onclick','showMiniMenu(this.id,event)');
         ev.target.appendChild(copyimg);
     }
 }
@@ -66,3 +70,23 @@ var loadFile = function(event) {
 	var evt = document.getElementById('ui-container');
 	evt.style.background = "url("+URL.createObjectURL(event.target.files[0])+") no-repeat center";
 };
+
+function showMiniMenu(element_id,ev) {
+    console.log(ev)
+    var foo = document.getElementById('mini-menu');
+    var opponent = document.getElementById(element_id);
+    if(foo.style.display == '' || foo.style.display == 'none'){
+            foo.style.display = 'block';
+    }
+    else {
+            foo.style.display = 'none';
+    }
+    foo.style.left = opponent.offsetLeft + opponent.offsetWidth + "px";
+    foo.style.top = opponent.offsetTop + "px";
+}
+
+function deleteElement(ev) {
+    console.log(ev);
+    document.getElementById(element_id).remove;
+}
+
